@@ -1,0 +1,33 @@
+@import "styles/variables";
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20px 30px;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 1199.98px) {
+    padding: 20px 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 30px;
+  }
+
+  h3 {
+    font-family: "BRFirma-bold";
+    font-weight: 700;
+    color: $omni-grey;
+    font-size: 1.4rem;
+  }
+
+  .user-profile {
+    .border {
+      img {
+        width: 50px;
+        border-radius: 50px;
+      }
+    }
+  }
+}

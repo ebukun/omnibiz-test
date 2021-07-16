@@ -1,0 +1,33 @@
+@import "styles/variables";
+
+.side-bar {
+  @include flex;
+  min-height: 100%;
+
+  &--links {
+    height: 100%;
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    .nav-link {
+      position: relative;
+      display: block;
+      margin-bottom: 1.5rem;
+      color: $omni-grey;
+
+      &.active {
+        color: $omni-purple;
+        font-weight: 600;
+        transition: all ease-out;
+      }
+
+      .route-name {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 2.25rem;
+        font-family: "BRFirma-bold";
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "short_name": "Omnibiz Test-App",
-  "name": "Omnibiz Test-App",
+  "short_name": "omnibiz-test",
+  "name": "omnibiz-test",
   "icons": [
     {
       "src": "favicon.ico",

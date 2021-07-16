@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "styles/global.scss";
 import App from "./App";
+import "styles/global.scss";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 

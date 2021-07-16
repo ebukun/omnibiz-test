@@ -1,0 +1,55 @@
+@import "styles/variables";
+body {
+  font-family: "BRFirma-regular";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  overflow-x: hidden;
+  color: $omni-purple;
+  background-color: $omni-light-gray;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  overscroll-behavior: contain none !important;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}

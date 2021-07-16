@@ -1,0 +1,57 @@
+@import "styles/variables";
+
+.data-table {
+  background: #ffffff;
+  border: 1px solid #eaedf3;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 10px;
+  overflow-x: scroll;
+
+  @media screen and (max-width: 1199px) {
+    overflow-x: scroll;
+  }
+
+  @media screen and (max-width: 969px) {
+    width: 90vw;
+    overflow-x: scroll;
+  }
+
+  @media screen and (max-width: 569px) {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+
+    @media screen and (max-width: 769px) {
+      width: 768px;
+    }
+
+    .table-header {
+      background-color: $omni-light-gray;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+
+      th {
+        padding: 0.6rem 0.6rem;
+      }
+    }
+
+    .table-data-row {
+      font-size: 0.875rem;
+      text-align: center;
+
+      td {
+        padding: 1.25rem 1.625rem;
+        color: #212529;
+
+        &:first-child {
+          padding-right: 0rem;
+        }
+      }
+    }
+  }
+}

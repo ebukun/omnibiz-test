@@ -1,0 +1,50 @@
+@import "styles/variables";
+.dashboard {
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+
+    @media screen and (max-width: 576px) {
+      flex-direction: column;
+    }
+
+    .welcome-note {
+      color: #1a073b;
+
+      @media screen and (max-width: 576px) {
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        font-family: "BRFirma-bold";
+        font-size: 1.5rem;
+        @media screen and (max-width: 640px) {
+          font-size: 1.1rem;
+        }
+      }
+
+      p {
+        color: $omni-purple;
+
+        @media screen and (max-width: 768px) {
+          font-size: 0.8rem;
+        }
+        @media screen and (max-width: 640px) {
+          width: 200px;
+          font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 576px) {
+          width: 100%;
+        }
+
+        span {
+          color: $omni-pink;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

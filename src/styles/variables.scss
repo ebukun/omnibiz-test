@@ -1,0 +1,10 @@
+$omni-grey: #acafb3;
+$omni-light-gray: #f3f5f7;
+$omni-purple: #1a073b;
+$omni-pink: #f53e6a;
+$omni-red: #d34242;
+
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+}

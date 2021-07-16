@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import ScrollToTop from "#/components/ScrollToTop/scrollToTop";
+import Dashboard from "#/pages/Dashboard";
+import AddContact from "#/pages/AddContact";
+import Sidebar from "#/components/Sidebar";
+import Navbar from "#/components/Navbar";
 
-function App() {
+const Root = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app-container">
+        <div className="left-col">
+          <Sidebar />
+        </div>
+        <div className="right-col">
+          <Navbar />
+          <div className="route-container">
+            <ScrollToTop />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/add-contacts" component={AddContact} />
+              <Redirect to="/" />
+            </Switch>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+const App = () => {
+  return (
+    <div>
+      <Router>
+        <Root/>
+      </Router>
+    </div>
+  );
+};
 
 export default App;

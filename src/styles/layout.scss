@@ -1,0 +1,139 @@
+@import "styles/variables";
+.app {
+  .app-container {
+    display: flex;
+    width: 100%;
+
+    .left-col {
+      width: 220px;
+      position: sticky;
+      z-index: 100;
+      transition: left 0.4s;
+      min-height: 100%;
+      background-color: #fff;
+      box-shadow: inset -1px 0 0 #f1f1f5;
+
+      @media screen and (max-width: 1199.98px) {
+        display: none;
+      }
+    }
+
+    .right-col {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      background-color: $omni-light-gray;
+      flex: 1;
+    }
+
+    .route-container {
+      background-color: #f3f5f7;
+
+      padding: 30px 30px;
+      @media screen and (max-width: 1199.98px) {
+        padding: 30px 50px;
+      }
+
+      @media screen and (max-width: 969px) {
+        min-height: 100vh;
+      }
+
+      @media screen and (max-width: 768px) {
+        padding: 30px 30px;
+      }
+    }
+
+    .stats-card {
+      margin-top: 40px;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: auto;
+      }
+    }
+
+    .card {
+      background-color: #fff;
+      color: #1a073b;
+      height: 170px;
+      padding: 17px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 6px;
+
+      .card-body {
+        h5 {
+          text-transform: uppercase;
+          font-family: "BRFirma-bold";
+          line-height: 1.2rem;
+          font-size: 1rem;
+        }
+
+        p {
+          text-transform: uppercase;
+          color: #acafb3;
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+      }
+
+      .amount-stat {
+        h3 {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .graph-stats-card {
+      margin-top: 20px;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 55% auto;
+
+      @media screen and (max-width: 969px) {
+        display: block;
+      }
+
+      .graph-card {
+        background-color: #fff;
+        color: #1a073b;
+        height: 340px;
+        padding: 27px 25px;
+        border-radius: 6px;
+
+        @media screen and (max-width: 969px) {
+          margin-bottom: 20px;
+        }
+        h4 {
+          margin-bottom: 30px;
+          font-size: 1.1rem;
+        }
+
+        ul {
+          display: flex;
+
+          @media screen and (max-width: 576px) {
+            flex-direction: column;
+          }
+
+          li {
+            margin-right: 50px;
+
+            p:nth-child(1) {
+              color: #acafb3;
+              font-size: 0.9rem;
+            }
+
+            p:nth-child(2) {
+              font-weight: 600;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
