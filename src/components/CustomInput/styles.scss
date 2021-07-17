@@ -23,9 +23,15 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
   .input-error {
     text-align: left;
     font-size: 0.75rem;
     color: $omni-red;
+    margin-bottom: 0.2rem;
+  }
+
+  .error {
+    border: 1px solid $omni-red;
   }
 }

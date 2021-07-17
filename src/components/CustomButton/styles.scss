@@ -1,15 +1,21 @@
+@import "styles/variables";
 .custom-btn {
   .omni-btn {
     position: relative;
     width: 100%;
     padding: 20px 20px 15px;
-    background-color: #f53e6a;
+    background-color: $omni-pink;
     border: none;
     border-radius: 6px;
     outline: none;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: rgba(245, 62, 106, 0.4);
+    }
   }
 
   .spinner {
