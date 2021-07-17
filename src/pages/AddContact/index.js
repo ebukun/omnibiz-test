@@ -3,9 +3,11 @@ import CustomButton from "#/components/CustomButton";
 import CustomInput from "#/components/CustomInput";
 import "./styles.scss";
 import { validateEmail } from "#/utils/utils";
+import { useContact } from "#/context/contact-context";
 
 const AddContact = (props) => {
   //State
+  const [loading, setLoading] = useState(false);
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -21,6 +23,9 @@ const AddContact = (props) => {
     address: "",
   });
   const [dynamicAddressFields, setDynamicAddressFields] = useState([]);
+
+  //context
+  const { addContacts } = useContact();
 
   //Gettting the user current location/positon
   useEffect(() => {
@@ -109,6 +114,29 @@ const AddContact = (props) => {
       setErrors(error);
       return;
     }
+
+    setLoading(true);
+    const payload = {
+      name,
+      email,
+      number,
+      address,
+      longitude,
+      latitude,
+    };
+
+    addContacts(payload, () => {
+      //clearing the fields
+      setState({
+        ...state,
+        name: "",
+        email: "",
+        number: "",
+        address: "",
+      });
+      setDynamicAddressFields([]);
+      setLoading(false);
+    });
   };
 
   //Adds extra new address fields
@@ -209,7 +237,7 @@ const AddContact = (props) => {
 
           <CustomInput label="Longitude" value={longitude} name="longitude" disabled={true} />
           <CustomInput label="Latitude" name="latitude" value={latitude} disabled={true} />
-          <CustomButton boxClass="mt-3" btnText="Submit" />
+          <CustomButton boxClass="mt-3" btnText="Submit" loading={loading} />
         </form>
       </div>
     </div>

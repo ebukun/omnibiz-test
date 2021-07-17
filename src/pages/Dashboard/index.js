@@ -1,13 +1,34 @@
 import CustomButton from "#/components/CustomButton";
 import CustomTable from "#/components/CustomTable";
-import React from "react";
+import { useContact } from "#/context/contact-context";
+import React, { useEffect } from "react";
 import { columns, tableData } from "./data";
 import "./styles.scss";
 
 const Dashboard = (props) => {
+  //context
+  const { getContacts, contacts, loading } = useContact();
+
+  useEffect(() => {
+    getContacts();
+  }, []);
+
   const handleRoute = () => {
     props.history.push("/add-contacts");
   };
+  console.log(contacts);
+  const contactList =
+    contacts &&
+    contacts.map((contact) => {
+      return {
+        name: contact.name,
+        email: contact.email,
+        number: contact.number,
+        address: contact.address,
+        lon: contact.longitude,
+        lat: contact.latitude,
+      };
+    });
   return (
     <div className="dashboard">
       <div className="">
@@ -22,7 +43,7 @@ const Dashboard = (props) => {
         </div>
 
         <div className="dashboard--main">
-          <CustomTable columns={columns} data={tableData} />
+          <CustomTable columns={columns} data={contactList} loading={loading} />
         </div>
       </div>
     </div>

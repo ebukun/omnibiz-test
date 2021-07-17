@@ -4,10 +4,13 @@ import App from "./App";
 import "styles/global.scss";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import { ContactProvider } from "#/context/contact-context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ContactProvider>
+      <App />
+    </ContactProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

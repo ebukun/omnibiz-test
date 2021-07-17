@@ -41,11 +41,11 @@ export const columns = [
   {
     name: "Longitude",
     index: "lon",
-    id: 4,
+    id: 5,
   },
   {
     name: "Latitude",
     index: "lat",
-    id: 4,
+    id: 6,
   },
 ];

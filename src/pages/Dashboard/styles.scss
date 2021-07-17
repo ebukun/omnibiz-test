@@ -8,6 +8,7 @@
 
     @media screen and (max-width: 576px) {
       flex-direction: column;
+      align-items: unset;
     }
 
     .welcome-note {

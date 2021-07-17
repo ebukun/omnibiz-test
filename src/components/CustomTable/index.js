@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./styles.scss";
 
-const CustomTable = ({ columns, data }) => {
+const CustomTable = ({ columns, data, loading }) => {
   return (
     <div className="data-table">
       <table>
@@ -15,6 +15,12 @@ const CustomTable = ({ columns, data }) => {
             ))}
         </tbody>
       </table>
+      {data.length === 0 && loading ? <div className="text-center">loading....</div> : null}
+      {data && data.length === 0 && !loading && (
+        <div className="text-center">
+          <p>No Data </p>
+        </div>
+      )}
     </div>
   );
 };
