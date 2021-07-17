@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "#/components/ScrollToTop/scrollToTop";
 import Dashboard from "#/pages/Dashboard";
@@ -7,14 +7,16 @@ import Sidebar from "#/components/Sidebar";
 import Navbar from "#/components/Navbar";
 
 const Root = () => {
+  const [menu, setMenu] = useState(false);
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
   return (
     <div className="app">
       <div className="app-container">
-        <div className="left-col">
-          <Sidebar />
-        </div>
+        <Sidebar classes="left-col" menu={menu} setMenu={setMenu} handleMenu={handleMenu} />
         <div className="right-col">
-          <Navbar />
+          <Navbar handleMenu={handleMenu} />
           <div className="route-container">
             <ScrollToTop />
             <Switch>
@@ -33,7 +35,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Root/>
+        <Root />
       </Router>
     </div>
   );

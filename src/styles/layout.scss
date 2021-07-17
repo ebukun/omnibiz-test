@@ -14,7 +14,17 @@
       box-shadow: inset -1px 0 0 #f1f1f5;
 
       @media screen and (max-width: 1199.98px) {
-        display: none;
+        position: fixed;
+        left: -300px;
+        height: 100%;
+
+        &.hide-left {
+          left: -300px;
+        }
+
+        &.show-left {
+          left: 0;
+        }
       }
     }
 

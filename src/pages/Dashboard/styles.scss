@@ -48,4 +48,12 @@
       }
     }
   }
+
+  &--main {
+    .map-text {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: $omni-pink;
+    }
+  }
 }

@@ -10,7 +10,9 @@ const ContactProvider = ({ children }) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    localStorage.setItem("omni-contacts", JSON.stringify(state));
+    if (state.contacts.length > 0) {
+      localStorage.setItem("omni-contacts", JSON.stringify(state));
+    }
   }, [state.contacts]);
 
   const addContacts = (payload, cb) => {
@@ -23,7 +25,6 @@ const ContactProvider = ({ children }) => {
   const getContacts = () => {
     const contact = JSON.parse(localStorage.getItem("omni-contacts"));
     setState({ ...state, loading: true });
-
     setTimeout(() => {
       if (contact) {
         setState({

@@ -1,0 +1,11 @@
+@import "styles/variables";
+.map {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.marker {
+  font-size: 2rem;
+  color: $omni-pink;
+}

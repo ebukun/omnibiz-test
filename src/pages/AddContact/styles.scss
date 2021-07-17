@@ -2,6 +2,10 @@
   .form {
     width: 50%;
 
+    @media screen and (max-width: 969px) {
+      width: 100%;
+    }
+
     &--label {
       font-size: 0.875rem;
     }

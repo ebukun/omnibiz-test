@@ -1,0 +1,16 @@
+@import "styles/variables";
+.marker-box {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 200px;
+  min-height: 100px;
+  padding: 10px;
+  background-color: rgba(26, 7, 59, 0.1);
+  border-radius: 10px;
+  color: #fff;
+
+  h2 {
+    font-size: 1rem;
+  }
+}

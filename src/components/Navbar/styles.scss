@@ -20,6 +20,7 @@
     font-weight: 700;
     color: $omni-grey;
     font-size: 1.4rem;
+    display: inline-block;
   }
 
   .user-profile {
@@ -27,6 +28,44 @@
       img {
         width: 50px;
         border-radius: 50px;
+      }
+    }
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+
+    .nav-toggle {
+      border: 0;
+      cursor: pointer;
+      display: none;
+      font-size: 22px;
+      position: relative;
+      padding: 10px;
+      outline: none;
+      height: 50px;
+      width: 50px;
+
+      @media screen and (max-width: 1199.98px) {
+        display: block;
+      }
+
+      .bar {
+        background-color: $omni-purple;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg);
+        height: 3px;
+        width: 30px;
+        transition: transform 0.2s ease;
+
+        &:first-of-type {
+          top: 40%;
+        }
+
+        &:last-of-type {
+          top: 60%;
+        }
       }
     }
   }

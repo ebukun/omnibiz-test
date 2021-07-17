@@ -1,5 +1,6 @@
 import CustomButton from "#/components/CustomButton";
 import CustomTable from "#/components/CustomTable";
+import Map from "#/components/Map";
 import { useContact } from "#/context/contact-context";
 import React, { useEffect } from "react";
 import { columns, tableData } from "./data";
@@ -44,6 +45,10 @@ const Dashboard = (props) => {
 
         <div className="dashboard--main">
           <CustomTable columns={columns} data={contactList} loading={loading} />
+          <div className="mt-4">
+            <p className="map-text">Click on the marker for contact info</p>
+            <Map contacts={contactList} />
+          </div>
         </div>
       </div>
     </div>
