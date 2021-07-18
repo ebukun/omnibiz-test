@@ -17,15 +17,16 @@ const Dashboard = (props) => {
   const handleRoute = () => {
     props.history.push("/add-contacts");
   };
-  console.log(contacts);
+
   const contactList =
     contacts &&
     contacts.map((contact) => {
+      console.log(contact.address.length);
       return {
         name: contact.name,
         email: contact.email,
         number: contact.number,
-        address: contact.address,
+        address: contact.address.length > 1 ? contact.address[Math.floor(Math.random() * contact.address.length)] : contact.address[0],
         lon: contact.longitude,
         lat: contact.latitude,
       };

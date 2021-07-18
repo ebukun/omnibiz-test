@@ -1,3 +1,4 @@
+@import "styles/variables";
 .add-contact-page {
   .form {
     width: 50%;
@@ -13,20 +14,25 @@
     &--contact {
       margin-top: 2rem;
 
+      .submit-note {
+        font-size: 0.9rem;
+        color: $omni-pink;
+      }
+
       .address-box {
         margin: 0.1rem 0rem;
         display: flex;
         align-items: center;
         width: 100%;
-        gap: 50px;
+        gap: 20px;
 
         &--input {
           width: 100%;
         }
 
         &--btn {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           border: 0;
           border-radius: 50%;
           font-size: 2rem;

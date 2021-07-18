@@ -10,7 +10,6 @@ const Map = ({ contacts, center, zoom }) => {
       <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBRLlq7SHVxP3KF7jjOtJ1eWnoqOjmNEns" }} defaultCenter={center} defaultZoom={zoom}>
         {contacts &&
           contacts.map((contact) => {
-            console.log(contact);
             return (
               <Marker
                 key={Math.random() * 100}
@@ -28,10 +27,10 @@ const Map = ({ contacts, center, zoom }) => {
 
 Map.defaultProps = {
   center: {
-    lat: 9.076479,
-    lng: 7.398574,
+    lat: 6.524379,
+    lng: 3.379206,
   },
-  zoom: 6,
+  zoom: 1,
 };
 
 export default Map;

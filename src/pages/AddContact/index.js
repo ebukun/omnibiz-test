@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "#/components/CustomButton";
 import CustomInput from "#/components/CustomInput";
 import "./styles.scss";
@@ -8,6 +8,7 @@ import { useContact } from "#/context/contact-context";
 const AddContact = (props) => {
   //State
   const [loading, setLoading] = useState(false);
+  const [submitnote, setsubmitnote] = useState(false);
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -16,13 +17,13 @@ const AddContact = (props) => {
     longitude: "",
     latitude: "",
   });
+  const [dynamicState, setdynamicState] = useState([]);
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     number: "",
     address: "",
   });
-  const [dynamicAddressFields, setDynamicAddressFields] = useState([]);
 
   //context
   const { addContacts } = useContact();
@@ -87,11 +88,23 @@ const AddContact = (props) => {
       if (value === "") {
         return setErrors({ ...errors, address: "Field is Required" });
       }
-      if (value.length < 5) {
-        return setErrors({ ...errors, address: "Please enter your full address" });
-      }
       setErrors({ ...errors, address: "" });
     }
+  };
+
+  //Validating dynamic Fields
+  const checkedDynamicFields = () => {
+    let err = false;
+
+    const fields = dynamicState;
+    fields.forEach((element) => {
+      if (element.value === "") {
+        err = true;
+        element.error = "Field is Required";
+      }
+    });
+    setdynamicState([...fields]);
+    return err;
   };
 
   const handleSubmit = (event) => {
@@ -100,6 +113,10 @@ const AddContact = (props) => {
 
     if ([longitude, latitude].includes("")) {
       alert("Plese turn-on your location. We need your location data to complete this form");
+      return;
+    }
+
+    if (checkedDynamicFields()) {
       return;
     }
 
@@ -115,12 +132,16 @@ const AddContact = (props) => {
       return;
     }
 
+    //Getting the dynamic values
+    const addressValues = dynamicState.map((element) => element.value).filter(Boolean);
+    const addressFields = [...addressValues, address];
+
     setLoading(true);
     const payload = {
       name,
       email,
       number,
-      address,
+      address: addressFields,
       longitude,
       latitude,
     };
@@ -134,32 +155,48 @@ const AddContact = (props) => {
         number: "",
         address: "",
       });
-      setDynamicAddressFields([]);
+      setsubmitnote(true);
+      setdynamicState([]);
       setLoading(false);
     });
+
+    setTimeout(() => {
+      setsubmitnote(false);
+    }, 5000);
   };
 
   //Adds extra new address fields
   const addInputField = () => {
-    const uid = Math.random().toString(36).substr(2, 5);
-    let newAddyField = {
-      title: uid,
+    const arr = [];
+    const newFields = {
+      title: Math.random().toString(36).substr(2, 5),
       value: "",
-      [uid]: "",
+      error: "",
     };
+    arr.push(newFields);
+    setdynamicState([...dynamicState, ...arr]);
+  };
 
-    setState({ ...state, [newAddyField.title]: "" });
-    setDynamicAddressFields([...dynamicAddressFields, newAddyField]);
+  //Dynamic fields handler
+  const handleAddressesOnchange = (title, e) => {
+    const value = e.target.value;
+
+    const newFields = dynamicState.map((ip) => {
+      if (ip.title === title) {
+        ip.value = value;
+      }
+      return ip;
+    });
+    setdynamicState([...newFields]);
   };
 
   //Remove extra new address fields
-  const removeInputField = (id) => {
-    let fields = dynamicAddressFields;
-    const dynamicFields = fields.filter((item) => {
-      return item.title !== id;
+  const removeInputField = (title) => {
+    const newFields = dynamicState.filter((item) => {
+      return item.title !== title;
     });
 
-    setDynamicAddressFields([...dynamicFields]);
+    setdynamicState([...newFields]);
   };
 
   const { name, email, number, longitude, latitude, address } = state;
@@ -209,26 +246,19 @@ const AddContact = (props) => {
               placeholder="Enter your Address"
               error={errors.address && errors.address}
             />
-            <CustomButton
-              type="button"
-              disabled={dynamicAddressFields.length === 4}
-              onClick={addInputField}
-              boxClass="address-box--btn"
-              btnText="+"
-            />
+            <CustomButton type="button" disabled={dynamicState.length === 4} onClick={addInputField} boxClass="address-box--btn" btnText="+" />
           </div>
 
-          {dynamicAddressFields &&
-            dynamicAddressFields.map((field) => {
+          {dynamicState &&
+            dynamicState.map((field) => {
               return (
-                <div className="address-box" key={Math.random() * 1000}>
+                <div className="address-box" key={field.title}>
                   <CustomInput
                     boxClasses="address-box--input"
                     label="Other Address"
                     name={field.title}
-                    value={field.title}
-                    onChange={handleOnChange}
-                    placeholder="Enter your Other Address"
+                    error={field.error && field.error}
+                    onChange={(e) => handleAddressesOnchange(field.title, e)}
                   />
                   <CustomButton type="button" onClick={() => removeInputField(field.title)} boxClass="address-box--btn" btnText="-" />
                 </div>
@@ -237,6 +267,8 @@ const AddContact = (props) => {
 
           <CustomInput label="Longitude" value={longitude} name="longitude" disabled={true} />
           <CustomInput label="Latitude" name="latitude" value={latitude} disabled={true} />
+
+          {submitnote ? <p className="submit-note">Submitted.....</p> : null}
           <CustomButton boxClass="mt-3" btnText="Submit" loading={loading} />
         </form>
       </div>
