@@ -7,7 +7,7 @@ const Map = ({ contacts, center, zoom }) => {
   const [contactInfo, setContactInfo] = useState(null);
   return (
     <div className="map">
-      <GoogleMapReact bootstrapURLKeys={{ key: "AIzaSyBRLlq7SHVxP3KF7jjOtJ1eWnoqOjmNEns" }} defaultCenter={center} defaultZoom={zoom}>
+      <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }} defaultCenter={center} defaultZoom={zoom}>
         {contacts &&
           contacts.map((contact) => {
             return (
