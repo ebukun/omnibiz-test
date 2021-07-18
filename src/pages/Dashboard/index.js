@@ -21,7 +21,6 @@ const Dashboard = (props) => {
   const contactList =
     contacts &&
     contacts.map((contact) => {
-      console.log(contact.address.length);
       return {
         name: contact.name,
         email: contact.email,
